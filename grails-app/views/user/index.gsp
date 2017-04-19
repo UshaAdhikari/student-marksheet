@@ -14,6 +14,9 @@
 
 <body>
 <h2>User List</h2>
+<g:if test="${flash.message}">
+    <div>${flash.message }</div>
+</g:if>
 <table>
     <thead>
     <tr>

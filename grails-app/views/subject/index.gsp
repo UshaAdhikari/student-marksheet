@@ -14,6 +14,10 @@
 
 <body>
 <h2>Subject List</h2>
+
+<g:if test="${flash.message}">
+    <div>${flash.message}</div>
+</g:if>
 <table>
     <thead>
     <tr>
@@ -21,6 +25,7 @@
         <th>Subject Name</th>
         <th>Total Marks</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
 
@@ -30,7 +35,8 @@
             <td>${i+1}</td>
             <td>${list.subName}</td>
             <td>${list.totalMarks}</td>
-            <td></td>
+            <td><g:link action="edit" id="${list.id}">Edit</g:link></td>
+            <td><g:link action="delete" id="${list.id}">Delete</g:link> </td>
         </tr>
     </g:each>
     </tbody>

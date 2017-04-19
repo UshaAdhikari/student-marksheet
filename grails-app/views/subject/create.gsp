@@ -17,15 +17,15 @@
 <h2>Add Subject</h2>
 <g:form action="save">
     <table>
-        <tr><td>name</td>
+        <tr><td>Subject Name</td>
             <td><g:textField name="subName"></g:textField></td>
         </tr>
 
-        <tr><td>Total marks</td>
+        <tr><td>Total Marks</td>
             <td><g:textField name="totalMarks"></g:textField></td>
         </tr>
 
-        <tr><td colspan="2"><g:submitButton name="submit" value="Add Subject"></g:submitButton> </td> </tr>
+        <tr><td colspan="2"><g:submitButton name="submit" value="Add Subject"></g:submitButton></td> </tr>
 
     </table>
 </g:form>
