@@ -16,22 +16,8 @@
 <body>
 <h2>Create User</h2>
 <g:form action="save">
-    <table>
-        <tr><td>Username</td>
-            <td><g:textField name="username"></g:textField></td>
-        </tr>
-
-        <tr><td>Password</td>
-            <td><g:passwordField name="password"></g:passwordField></td>
-        </tr>
-
-        <tr><td>User Type</td>
-            <td><g:textField name="userType"></g:textField></td>
-        </tr>
-
-        <tr><td colspan="2"><g:submitButton name="submit" value="Create User"></g:submitButton> </td> </tr>
-
-    </table>
+    <g:render template="form"></g:render>
+    <div><tr><td colspan="2"><g:submitButton name="submit" value="Create User"></g:submitButton> </td> </tr></div>
 </g:form>
 </body>
 </html>

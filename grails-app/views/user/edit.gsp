@@ -10,22 +10,8 @@
 <h2>Edit User</h2>
 <g:form action="update">
     <g:hiddenField name="id" value="${userInfo.id}"></g:hiddenField>
-    <table>
-        <tr><td>Username</td>
-            <td><g:textField name="username" value="${userInfo.username}"></g:textField></td>
-        </tr>
-
-        <tr><td>Password</td>
-            <td><g:passwordField name="password" value="${userInfo.password}"></g:passwordField></td>
-        </tr>
-
-        <tr><td>User Type</td>
-            <td><g:textField name="userType" value="${userInfo.userType}"></g:textField></td>
-        </tr>
-
-        <tr><td colspan="2"><g:submitButton name="submit" value="Update User"></g:submitButton> </td> </tr>
-
-    </table>
+    <g:render template="form"></g:render>
+    <div><tr><td colspan="2"><g:submitButton name="submit" value="Update User"></g:submitButton> </td> </tr></div>
 </g:form>
 </body>
 </html>

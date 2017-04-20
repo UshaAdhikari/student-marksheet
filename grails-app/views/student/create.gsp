@@ -16,38 +16,12 @@
 <body>
 <h2>Add Student</h2>
 <g:form action="save">
-    <table>
-        <tr><td>Name</td>
-            <td><g:textField name="stdName"></g:textField></td>
-        </tr>
-
-        <tr><td>Address</td>
-            <td><g:textField name="address"></g:textField></td>
-        </tr>
-
-        <tr><td>Email</td>
-            <td><g:textField name="email"></g:textField></td>
-        </tr>
-
-        <tr><td>Phone Number</td>
-            <td><g:textField name="phone"></g:textField></td>
-        </tr>
-
-        <tr><td>Roll Number</td>
-            <td><g:textField name="rollNum"></g:textField></td>
-        </tr>
-
-        <tr><td>Batch</td>
-            <td><g:textField name="batch"></g:textField></td>
-        </tr>
-
-        <tr><td>Image</td>
-            <td><g:textField name="imageName"></g:textField></td>
-        </tr>
-
+    <g:render template="form"></g:render>
+    <div>
         <tr><td colspan="2"><g:submitButton name="submit" value="Add student"></g:submitButton> </td> </tr>
+    </div>
 
-    </table>
+
 </g:form>
 </body>
 </html>

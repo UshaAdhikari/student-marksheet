@@ -3,8 +3,9 @@ package stmarks
 class SubjectController {
 
     def index() {
-        def subjectList = Subject.list();
-        [sublist: subjectList]
+        params.max = 2
+        def subjectList = Subject.list(params);
+        [sublist: subjectList, totalCount:Subject.count()]
     }
 
     def edit(){
@@ -15,7 +16,7 @@ class SubjectController {
     def update(){
         def subject = Subject.get(params.id);
         subject.subName = params.subName
-        subject.totalMarks = params.totalMarks
+        subject.totalMarks = Integer.parseInt(params.totalMarks)
 
         if(subject.save())
         {

@@ -3,8 +3,9 @@ package stmarks
 class StudentController {
 
     def index() {
-        def studentList = Student.list();
-        [stdlist: studentList]
+        params.max = 2
+        def studentList = Student.list(params);
+        [stdlist: studentList, totalCount:Student.count()]
     }
 
     def edit(){
@@ -17,8 +18,8 @@ class StudentController {
         student.stdName = params.stdName
         student.address = params.address
         student.email = params.email
-        student.phone = params.phone
-        student.rollNum = params.rollNum
+        student.phone = Integer.parseInt(params.phone)
+        student.rollNum = Integer.parseInt(params.rollNum)
         student.batch = params.batch
         student.imageName = params.imageName
 

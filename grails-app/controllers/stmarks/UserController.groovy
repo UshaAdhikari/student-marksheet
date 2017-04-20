@@ -3,8 +3,9 @@ package stmarks
 class UserController {
 
     def index() {
-        def userList = User.list();
-        [ulist: userList]
+        params.max = 2 //params.max is used for per page max data display
+        def userList = User.list(params);
+        [ulist: userList, totalCount:User.count()]
     }
     def edit(){
         def user = User.get(params.id);

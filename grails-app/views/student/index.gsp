@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h2>Student List</h2>
+<div><h2>Student List <span style="float:right"><g:link  action="save">Create Student</g:link></span style="float:right"></h2></div>
 <g:if test="${flash.message}">
     <div>${flash.message }</div>
 </g:if>
@@ -50,5 +50,10 @@
     </g:each>
     </tbody>
 </table>
+
+<div class="pagination">
+    <g:paginate total="${totalCount}"></g:paginate>
+</div>
+
 </body>
 </html>
