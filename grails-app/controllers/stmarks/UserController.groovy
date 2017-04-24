@@ -22,8 +22,8 @@ class UserController {
         {
             flash.message = "User updated successfully."
             redirect(action: "index")
-        }else
-        {
+        }else {
+            flash.message = "Update failed..Please try again..!!"
             render (view: "edit", model: [userInfo: user])
         }
     }
@@ -43,20 +43,28 @@ class UserController {
     def create(){
 
     }
-    def save()
-    {
+    def save() {
         def user = new User(params);
-        if(user.save())
-        {
+        if (user.save()) {
+            flash.message = "User added successfully"
             redirect(action: "index")
-        }else
-        {
+        } else {
+            flash.message = "Operation failed..Please try again..!!"
             redirect(action: "create")
         }
-
+    }
+    def search() {
+        if (params.keyword){
+            params.max = 2
+            def userList = User.findAllByUsernameIlikeOrUserTypeIlike(params.keyword+"%", params.keyword+"%", params);
+            def userCount = User.findAllByUsernameIlikeOrUserTypeIlike(params.keyword+"%", params.keyword+"%", params);
+            render (view: "index", model: [ulist: userList, totalCount: userCount, params: params])
+        }else {
+            redirect(action: "index")
+        }
+    }
 
 /*user.username = params.username;
 user.password = params.password;*/
 
-    }
 }

@@ -14,6 +14,13 @@
 
 <body>
 <div><h2>Student List <span style="float:right"><g:link  action="save">Create Student</g:link></span style="float:right"></h2></div>
+<div style="float: right">
+    <g:form action="search">
+        <g:textField name="keyword" placeholder="Type keyword to search">${params.keyword}</g:textField>
+        <g:submitButton name="search" value="Search"></g:submitButton>
+    </g:form>
+</div>
+
 <g:if test="${flash.message}">
     <div>${flash.message }</div>
 </g:if>
@@ -52,7 +59,7 @@
 </table>
 
 <div class="pagination">
-    <g:paginate total="${totalCount}"></g:paginate>
+    <g:paginate total="${totalCount}" params="${params}"></g:paginate>
 </div>
 
 </body>

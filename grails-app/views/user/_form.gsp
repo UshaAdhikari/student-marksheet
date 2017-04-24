@@ -11,6 +11,4 @@
         <td><g:textField name="userType" value="${userInfo?.userType}"></g:textField></td>
     </tr>
 
-
-
 </table>

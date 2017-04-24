@@ -4,8 +4,8 @@ class Student {
     String stdName;
     String address;
     String email;
-    int phone;
-    int rollNum;
+    double phone;
+    double rollNum;
     String batch;
     String imageName;
 
