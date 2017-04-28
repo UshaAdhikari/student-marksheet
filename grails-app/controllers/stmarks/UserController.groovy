@@ -1,12 +1,13 @@
 package stmarks
 
-class UserController {
+class UserController extends BaseController{
 
     def index() {
         params.max = 2 //params.max is used for per page max data display
         def userList = User.list(params);
         [ulist: userList, totalCount:User.count()]
     }
+
     def edit(){
         def user = User.get(params.id);
         [userInfo: user]

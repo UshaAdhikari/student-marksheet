@@ -14,19 +14,45 @@
 
 <body>
 
-<div><h2>User List<span style="float:right"><g:link  action="save">Create User</g:link></span style="float:right"> </h2> </div>
-<div style="float: right">
+<div><h2><span style="padding-left: 10px;">User List</span> <span style="float:right; padding-right: 10px"><g:link  action="save"><em>Create Subject</em></g:link></span style="float:right"></h2></div>
+
+
+%{--
+<div style= "padding-top: 10px">
+    <h2>User List</h2>
+</div>
+
+<div>
+    <span style="float:left; padding-left: 10px"><g:link  action="save">Create User</g:link></span> <span style="float: right; padding: 15px"><g:form action="search">
+    <g:textField name="keyword" placeholder="Type keyword to search">${params.keyword}</g:textField>
+    <g:submitButton name="search" value="Search"></g:submitButton>
+</g:form>
+</span>
+</div>
+--}%
+
+<div style="float: right; padding: 15px">
     <g:form action="search">
         <g:textField name="keyword" placeholder="Type keyword to search">${params.keyword}</g:textField>
         <g:submitButton name="search" value="Search"></g:submitButton>
     </g:form>
 </div>
 
-<g:if test="${flash.message}">
-    <div>${flash.message }</div>
-</g:if>
+
+<div>
+
+</div>
+
+
 <table>
     <thead>
+    <tr>
+        <span style="text-align: center">
+            <g:if test="${flash.message}">
+                <div>${flash.message }</div>
+            </g:if>
+        </span>
+    </tr>
     <tr>
         <th>SN</th>
         <th>User Name</th>

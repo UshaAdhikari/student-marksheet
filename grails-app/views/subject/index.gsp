@@ -13,8 +13,9 @@
 </head>
 
 <body>
-<div><h2>Subject List <span style="float:right"><g:link  action="save">Create Subject</g:link></span style="float:right"></h2></div>
-<div style="float: right">
+<div><h2><span style="padding-left: 10px; padding-top: 10px">Subject List</span> <span style="float:right; padding-right: 10px"><g:link  action="save">Create Subject</g:link></span style="float:right"></h2></div>
+
+<div style="float: right; padding: 15px">
     <g:form action="search">
         <g:textField name="keyword" placeholder="Type keyword to search">${params.keyword}</g:textField>
         <g:submitButton name="search" value="Search"></g:submitButton>

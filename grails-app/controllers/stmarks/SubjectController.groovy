@@ -1,6 +1,6 @@
 package stmarks
 
-class SubjectController {
+class SubjectController extends BaseController{
 
     def index() {
         params.max = 2
