@@ -10,6 +10,6 @@ class Student {
     String image;
 
     static constraints = {
-        stdName(blank: false,nullable: false,minSize: 3)
+        stdName(blank: false,nullable: false)
     }
 }

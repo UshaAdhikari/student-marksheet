@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main">
+    <meta name="layout" content="mylayout">
     <title>Final Marksheet</title>
 </head>
 
@@ -26,6 +26,12 @@
                     <td>Batch: </td>
                     <td>${list.std.batch} </td>
                 </tr>
+
+                <tr>
+                    <td>Email: </td>
+                    <td>${list.std.email} </td>
+                </tr>
+
                 <tr>
                     <td>Roll No.</td>
                     <td>${list.std.rollNum}</td>

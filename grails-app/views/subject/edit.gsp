@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Create Subject</title>
+    <title>Edit Subject</title>
     <meta name="layout" content="main">
     <meta name="keywords" content="">
 </head>

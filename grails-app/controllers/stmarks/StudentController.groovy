@@ -24,7 +24,7 @@ class StudentController extends BaseController{
         student.phone = Double.parseDouble(params.phone)
         student.rollNum = Double.parseDouble(params.rollNum)
         student.batch = params.batch
-        student.image = params.imageName
+        student.image = params.image
 
         if(student.save())
         {
@@ -54,10 +54,10 @@ class StudentController extends BaseController{
 
             student.delete();
             flash.message = "Student deleted Successfully";
-            redirect(action:'index');
+            redirect(action:"index");
         } else {
             flash.message = "Student doesn't exists";
-            redirect(action:'index');
+            redirect(action:"index");
         }
     }
 
@@ -67,10 +67,9 @@ class StudentController extends BaseController{
 
     def save() {
         uploadImage(params)
-        def student = new Student(params);
-
+        def student = new Student(params)
         if(student.save()) {
-            redirect(action: 'index');
+            redirect(action: "index");
         } else {
             render(view: "create", model: [studentInstance: student])
             return

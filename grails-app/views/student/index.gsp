@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<div><h2><span style="padding-left: 10px">Student List</span> <span style="float:right; padding-right: 5px"><g:link  action="save">Create Student</g:link></span style="float:right"></h2></div>
+<div><h2><span style="padding-left: 10px">Student List</span> <span style="float:right; padding-right: 5px"><g:link  action="create">Create Student</g:link></span style="float:right"></h2></div>
 <div style="float: right; padding: 15px">
     <g:form action="search">
         <g:textField name="keyword" placeholder="Type keyword to search">${params.keyword}</g:textField>
