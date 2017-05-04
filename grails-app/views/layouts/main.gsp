@@ -14,24 +14,25 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+
 	<g:layoutHead/>
 	<r:layoutResources />
 </head>
 <body>
 <div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
-
 <g:if test="${session.userId}">
 	<div class="nav">
-		<ul>
-			<li><g:link controller="user" action="index">User</g:link> </li>
-			<li><g:link controller="student" action="index">Student</g:link> </li>
-			<li><g:link controller="subject" action="index">Subject</g:link> </li>
-			<li><g:link controller="marksheet" action="index">Marksheet</g:link> </li>
-			<li style="float: right"><g:link controller="login" action="logout">Logout</g:link> </li>
-		</ul>
+		<div>
+			<ul>
+				<li><g:link controller="user" action="index">User</g:link></li>
+				<li><g:link controller="student" action="index">Student</g:link></li>
+				<li><g:link controller="subject" action="index">Subject</g:link></li>
+				<li class="dropdown"><g:link controller="marksheet" action="print">Marksheet</g:link></li>
+				<span style="float: right"><li><g:link controller="login" action="logout">Logout</g:link> </li></span>
+			</ul>
+		</div>
 	</div>
 </g:if>
-
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

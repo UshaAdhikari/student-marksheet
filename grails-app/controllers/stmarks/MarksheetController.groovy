@@ -11,7 +11,8 @@ class MarksheetController extends BaseController{
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        // params.max = Math.min(max ?: 10, 100)
+        params.max = 4
         [marksheetInstanceList: Marksheet.list(params), marksheetInstanceTotal: Marksheet.count()]
     }
 
@@ -20,14 +21,15 @@ class MarksheetController extends BaseController{
     }
 
     def save() {
-        def marksheetInstance = new Marksheet(params)
+        def marksheetInstance = new Marksheet(params);
         if (!marksheetInstance.save(flush: true)) {
             render(view: "create", model: [marksheetInstance: marksheetInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'marksheet.label', default: 'Marksheet'), marksheetInstance.id])
-        redirect(action: "show", id: marksheetInstance.id)
+        //redirect(action: "show", id: marksheetInstance.id)
+        redirect(action: 'index')
     }
 
     def show(Long id) {
@@ -63,8 +65,8 @@ class MarksheetController extends BaseController{
         if (version != null) {
             if (marksheetInstance.version > version) {
                 marksheetInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'marksheet.label', default: 'Marksheet')] as Object[],
-                          "Another user has updated this Marksheet while you were editing")
+                        [message(code: 'marksheet.label', default: 'Marksheet')] as Object[],
+                        "Another user has updated this Marksheet while you were editing")
                 render(view: "edit", model: [marksheetInstance: marksheetInstance])
                 return
             }
@@ -78,7 +80,7 @@ class MarksheetController extends BaseController{
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'marksheet.label', default: 'Marksheet'), marksheetInstance.id])
-        redirect(action: "show", id: marksheetInstance.id)
+        // redirect(action: "show", id: marksheetInstance.id)
     }
 
     def delete(Long id) {
@@ -97,6 +99,46 @@ class MarksheetController extends BaseController{
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'marksheet.label', default: 'Marksheet'), id])
             redirect(action: "show", id: id)
+        }
+    }
+
+    def print(){
+
+    }
+
+    def finalMarksheet(){
+        Student st = Student.findByBatchAndRollNum(params.batch, params.rollNum)
+        def marksheet = Marksheet.findAllByStd(st)
+        if(marksheet){
+            int finalMarks = 0
+            int finalTotalMarks = 0
+            int count = 0
+            String pf
+            for(int m: marksheet.obtainedMarks)
+            {
+                finalMarks+= m
+                if(m<32){
+                    count++
+                }
+            }
+            if(count!=0){
+                pf = "Fail"
+            }
+            else{
+                pf = "Pass"
+            }
+
+            for(int tm: marksheet.sub.totalMarks)
+            {
+                finalTotalMarks+=tm
+            }
+
+            def percentage = (finalMarks/finalTotalMarks)*100
+            [marksheet: marksheet, finalMarks: finalMarks, finalTotalMarks: finalTotalMarks, percentage: percentage, count: count, pf: pf]
+        }
+        else{
+            flash.message="Student with the given Batch and Roll number cannot be found"
+            redirect(action: "print")
         }
     }
 }

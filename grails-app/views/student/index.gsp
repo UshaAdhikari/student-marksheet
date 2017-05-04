@@ -8,8 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Student List</title>
+    <title>Students List</title>
     <meta name="layout" content="main">
+    <meta name="keywords" content="">
 </head>
 
 <body>
@@ -50,9 +51,19 @@
             <td>${list.phone}</td>
             <td>${list.rollNum}</td>
             <td>${list.batch}</td>
-            <td>${list.imageName}</td>
+            <td><g:if test = "${list.image}">
+                <g:img dir="images/student" file="${list.image}" width="100"></g:img>
+            </g:if>
+            </td>
             <td><g:link action="edit" id="${list.id}">Edit</g:link></td>
-            <td><g:link action="delete" id="${list.id}">Delete</g:link> </td>
+            <td><g:link action="delete" id="${list.id}">Delete</g:link></td>
+
+            %{--<g:each in="${session.userType}" var="type">
+                <g:if test="${type == "admin"}">
+                    <td><g:link action="edit" id="${list.id}">Edit</g:link></td>
+                    <td><g:link action="delete" id="${list.id}" onclick="return confirm('Do you really want to delete?')">Delete</g:link></td>
+                </g:if>
+            </g:each>--}%
         </tr>
     </g:each>
     </tbody>

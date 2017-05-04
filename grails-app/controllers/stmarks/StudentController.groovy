@@ -1,5 +1,8 @@
 package stmarks
 
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
+
 class StudentController extends BaseController{
 
     def index() {
@@ -21,7 +24,7 @@ class StudentController extends BaseController{
         student.phone = Double.parseDouble(params.phone)
         student.rollNum = Double.parseDouble(params.rollNum)
         student.batch = params.batch
-        student.imageName = params.imageName
+        student.image = params.imageName
 
         if(student.save())
         {
@@ -42,16 +45,19 @@ class StudentController extends BaseController{
             redirect(action: "index")
         }
     }
+
     def delete(){
         def student = Student.get(params.id);
-        if(student){
+
+        if(student) {
+            Marksheet.executeUpdate("delete Marksheet m where m.std.id = ?", [student.id])
+
             student.delete();
-            flash.message = "Student deleted successfully"
-            redirect(action: "index")
-        }else
-        {
-            flash.message = "Student does not exist."
-            redirect(action: "index")
+            flash.message = "Student deleted Successfully";
+            redirect(action:'index');
+        } else {
+            flash.message = "Student doesn't exists";
+            redirect(action:'index');
         }
     }
 
@@ -60,13 +66,28 @@ class StudentController extends BaseController{
     }
 
     def save() {
+        uploadImage(params)
         def student = new Student(params);
-        if (student.save()) {
-            flash.message = "Student added successfully"
-            redirect(action: "index")
+
+        if(student.save()) {
+            redirect(action: 'index');
         } else {
-            flash.message = "Operation failed..Please try again..!!"
-            redirect(action: "create")
+            render(view: "create", model: [studentInstance: student])
+            return
+        }
+    }
+
+    def uploadImage(params)
+    {
+        String path = grailsApplication.mainContext.servletContext.getRealPath("");
+        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request; //error
+        CommonsMultipartFile file = (CommonsMultipartFile) mpr.getFile("studentImage");
+
+        if(file)
+        {
+            file.transferTo(new File(path+"/images/student/${file.getOriginalFilename()}"))
+            params.image = file.getOriginalFilename();
+            params.remove("studentImage");
         }
     }
 }

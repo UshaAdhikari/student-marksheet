@@ -3,7 +3,8 @@ package stmarks
 class Marksheet {
     Student std;
     Subject sub;
-    int marks;
+    /*int totalMarks;*/
+    int obtainedMarks;
 
     static constraints = {
     }

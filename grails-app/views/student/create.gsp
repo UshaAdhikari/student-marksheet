@@ -15,7 +15,7 @@
 
 <body>
 <h2>Add Student</h2>
-<g:form action="save">
+<g:form action="save" enctype="multipart/form-data">
     <g:render template="form"></g:render>
     <div>
         <tr><td colspan="2"><g:submitButton name="submit" value="Add student"></g:submitButton> </td> </tr>

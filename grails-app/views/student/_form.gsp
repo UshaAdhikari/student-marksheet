@@ -23,8 +23,8 @@
         <td><g:textField name="batch" value="${studentInfo?.batch}"></g:textField></td>
     </tr>
 
-    <tr><td>Image Name</td>
-        <td><g:textField name="imageName" value="${studentInfo?.imageName}"></g:textField></td>
+    <tr><td>Image</td>
+        <td><input type="file" name="studentImage"></td>
     </tr>
 
 </table>

@@ -7,7 +7,7 @@ class Student {
     double phone;
     double rollNum;
     String batch;
-    String imageName;
+    String image;
 
     static constraints = {
         stdName(blank: false,nullable: false,minSize: 3)
