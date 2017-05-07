@@ -32,6 +32,7 @@
 			</li>
 		</g:if>
 
+		%{--
 		<g:if test="${marksheetInstance?.sub.totalMarks}">
 			<li class="fieldcontain">
 				<span id="totalMarks-label" class="property-label"><g:message code="marksheet.totalMarks.label" default="Total Marks" /></span>
@@ -40,12 +41,13 @@
 
 			</li>
 		</g:if>
+--}%
 
 		<g:if test="${marksheetInstance?.std}">
 			<li class="fieldcontain">
 				<span id="std-label" class="property-label"><g:message code="marksheet.std.label" default="Std" /></span>
 
-				<span class="property-value" aria-labelledby="std-label"><g:link controller="student" action="show" id="${marksheetInstance?.std?.id}">${marksheetInstance?.std?.stdName}</g:link></span>
+				<span class="property-value" aria-labelledby="std-label"><g:link controller="student" action="index" id="${marksheetInstance?.std?.id}">${marksheetInstance?.std?.stdName}</g:link></span>
 
 			</li>
 		</g:if>

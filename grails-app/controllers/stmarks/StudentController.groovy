@@ -6,7 +6,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile
 class StudentController extends BaseController{
 
     def index() {
-        params.max = 2
+        params.max = 4
         def studentList = Student.list(params);
         [stdlist: studentList, totalCount:Student.count()]
     }
@@ -21,10 +21,12 @@ class StudentController extends BaseController{
         student.stdName = params.stdName
         student.address = params.address
         student.email = params.email
-        student.phone = Double.parseDouble(params.phone)
-        student.rollNum = Double.parseDouble(params.rollNum)
+        student.phone = params.phone
+        student.rollNum = params.rollNum
         student.batch = params.batch
         student.image = params.image
+
+        def marksheet = Marksheet.findAllByStd(student)
 
         if(student.save())
         {
@@ -79,14 +81,22 @@ class StudentController extends BaseController{
     def uploadImage(params)
     {
         String path = grailsApplication.mainContext.servletContext.getRealPath("");
-        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request; //error
+        MultipartHttpServletRequest mpr = (MultipartHttpServletRequest) request;
         CommonsMultipartFile file = (CommonsMultipartFile) mpr.getFile("studentImage");
+        if(file.getOriginalFilename()){
+            params.filename=file.getOriginalFilename();
+        }
+        else{
+            params.filename=params.OldImage;
+        }
 
         if(file)
         {
             file.transferTo(new File(path+"/images/student/${file.getOriginalFilename()}"))
             params.image = file.getOriginalFilename();
+            params.image="${params.filename}"
             params.remove("studentImage");
+            params.remove("OldImage");
         }
     }
 }

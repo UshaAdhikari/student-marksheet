@@ -3,7 +3,7 @@ package stmarks
 class SubjectController extends BaseController{
 
     def index() {
-        params.max = 2
+        params.max = 4
         def subjectList = Subject.list(params);
         [sublist: subjectList, totalCount:Subject.count()]
     }
@@ -16,6 +16,7 @@ class SubjectController extends BaseController{
     def update(){
         def subject = Subject.get(params.id);
         subject.subName = params.subName
+        subject.passMarks = Integer.parseInt(params.passMarks)
         subject.totalMarks = Integer.parseInt(params.totalMarks)
 
         if(subject.save())

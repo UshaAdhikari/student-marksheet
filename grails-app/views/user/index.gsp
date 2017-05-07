@@ -14,7 +14,7 @@
 
 <body>
 
-<div><h2><span style="padding-left: 10px;">User List</span> <span style="float:right; padding-right: 10px"><g:link  action="save"><em>Create User</em></g:link></span style="float:right"></h2></div>
+<div><h2><span style="padding-left: 10px;">User List</span> <span style="float:right; padding-right: 10px"><g:link  action="save">Create User</g:link></span style="float:right"></h2></div>
 
 
 %{--
@@ -37,12 +37,6 @@
         <g:submitButton name="search" value="Search"></g:submitButton>
     </g:form>
 </div>
-
-
-<div>
-
-</div>
-
 
 <table>
     <thead>

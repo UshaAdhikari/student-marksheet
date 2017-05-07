@@ -27,7 +27,7 @@
 				<li><g:link controller="user" action="index">User</g:link></li>
 				<li><g:link controller="student" action="index">Student</g:link></li>
 				<li><g:link controller="subject" action="index">Subject</g:link></li>
-				<li class="dropdown"><g:link controller="marksheet" action="print">Marksheet</g:link></li>
+				<li class="dropdown"><g:link controller="marksheet" action="list">Marksheet</g:link></li>
 				<span style="float: right"><li><g:link controller="login" action="logout">Logout</g:link> </li></span>
 			</ul>
 		</div>

@@ -6,5 +6,8 @@ class User {
     String userType;
 
     static constraints = {
+        username(blank: false,nullable: false)
+        password(blank: false,nullable: false)
+        userType(blank: false, nullable: false)
     }
 }

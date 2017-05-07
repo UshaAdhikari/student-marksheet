@@ -32,6 +32,7 @@
         <th>SN</th>
         <th>Subject Name</th>
         <th>Total Marks</th>
+        <th>Pass Marks</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -43,6 +44,7 @@
             <td>${i+1}</td>
             <td>${list.subName}</td>
             <td>${list.totalMarks}</td>
+            <td>${list.passMarks}</td>
             <td><g:link action="edit" id="${list.id}">Edit</g:link></td>
             <td><g:link action="delete" id="${list.id}">Delete</g:link> </td>
         </tr>
